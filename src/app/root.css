@@ -1,0 +1,17 @@
+@keyframes rotation {
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.growing_plant {
+  animation: rotation 10000ms infinite;
+}
+
+.changeable_text__color {
+  color: rgb(var(--nature-darker-rgb));
+}
+
+.changeable_button__color {
+  background-color: rgb(var(--nature-rgb));
+}
