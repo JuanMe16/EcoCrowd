@@ -10,9 +10,9 @@ export default function LatestProjects() {
 
     return (
         <>
-            <div className='drop-shadow-lg my-1'>
+            <div className='drop-shadow-lg'>
                 <h1 className='pl-4 text-3xl font-bold' >New Projects on EcoCrowd!</h1>
-                <ul className='flex p-8 m-4 rounded-lg bg-gray-200 justify-around'>
+                <ul className='flex p-8 m-4 rounded-lg bg-gray-200 justify-around text-slate-900'>
                     {projectsList.map((v, key) => {
                         return <li className='flex w-1/2 flex-col text-lg mx-4' key={key}>
                             <div className='my-2 bg-teal-900 h-14 rounded-sm' />

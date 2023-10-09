@@ -10,9 +10,9 @@ export default function ProfileResume() {
 
     return (
         <>
-            <div className='drop-shadow-lg my-1'>
+            <div className='drop-shadow-lg mb-5'>
                 <h1 className='pl-4 text-3xl font-bold' >Profile Information</h1>
-                <ul className='flex p-8 m-4 rounded-lg bg-gray-200 justify-around'>
+                <ul className='flex p-8 m-4 rounded-lg bg-gray-200 justify-around text-slate-900'>
                     {profileList.map((v, key) => {
                         return <li key={key} className='flex flex-col'>
                             <label className='text-lg mx-auto font-bold'>{v.label}</label>

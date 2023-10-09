@@ -3,7 +3,7 @@ import './root.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
-const inter = Inter({ subsets: ["latin"], weight: ["400", "600", "800"] })
+const inter = Inter({ subsets: ["latin"], weight: ["400", "600", "800"] });
 
 export const metadata: Metadata = {
   title: 'EcoCrowd',
