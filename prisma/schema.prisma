@@ -11,8 +11,42 @@ datasource db {
 }
 
 model User {
+  id           Int       @id @default(autoincrement())
+  email        String    @unique
+  username     String
+  password     String
+  description  String
+  age          Int
+  socials      String
+  creationDate DateTime  @default(now())
+  profiles     Profile[]
+}
+
+model Group {
+  id          Int       @id @default(autoincrement())
+  name        String
+  description String
+  members     Profile[]
+  projects    Project[]
+}
+
+model Profile {
   id       Int    @id @default(autoincrement())
-  email    String @unique
-  username String
-  password String
+  group_id Int
+  user_id  Int
+  role     String
+  group    Group  @relation(fields: [group_id], references: [id])
+  user     User   @relation(fields: [user_id], references: [id])
+}
+
+model Project {
+  id          Int    @id @default(autoincrement())
+  name        String
+  description String
+  investment  Int
+  funds       Int
+  group_id    Int
+  views       Int
+  likes       Int
+  group       Group  @relation(fields: [group_id], references: [id])
 }
