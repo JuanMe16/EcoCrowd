@@ -1,6 +1,6 @@
 import { Inter } from 'next/font/google';
 import { Navbar } from '@/components/dashboard/Navbar';
-const inter = Inter({ subsets: ["latin"], weight: ["400", "600", "800"] })
+const inter = Inter({ subsets: ["latin"], weight: ["400", "600", "800"] });
 
 export default function DashboardLayout({
   children,
