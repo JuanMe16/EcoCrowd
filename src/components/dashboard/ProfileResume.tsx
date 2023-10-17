@@ -1,12 +1,24 @@
-import React from 'react'
+"use client";
+import React, { useEffect, useState } from 'react';
+import { sendProfileResume } from '@/utils/dashboard';
 
+//Profile Resume or Description with basic info about the current account.
 export default function ProfileResume() {
+    const [profileObject, setProfileObject] = useState({ username: "", email: "", createdAt: "", age: 0 });
     const profileList = [
-        { label: "Email", value: "gerardo@gmail.com" },
-        { label: "User", value: "Gerardo" },
-        { label: "Projects", value: "0" },
-        { label: "Created at", value: "2023" },
+        { label: "Email", value: profileObject.email },
+        { label: "User", value: profileObject.username },
+        { label: "Age", value: profileObject.age },
+        { label: "Created at", value: profileObject.createdAt },
     ];
+
+    useEffect(() => {
+        sendProfileResume().then((result) => {
+            setProfileObject(result);
+        }).catch(() => {
+            alert("Error Loading Profile Resume. Re-authenticate.");
+        });
+    });
 
     return (
         <>

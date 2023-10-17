@@ -2,6 +2,7 @@ import React from 'react';
 import { Lalezar } from 'next/font/google';
 import Link from 'next/link';
 
+//Navigation Bar for Dashboard.
 const lalezar = Lalezar({ subsets: ["latin"], weight: "400" });
 
 export const Navbar = () => {

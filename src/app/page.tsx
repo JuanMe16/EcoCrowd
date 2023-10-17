@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 const lalezar = Lalezar({ subsets: ["latin"], weight: "400" });
 
+//Home landing page.
 export default function Home() {
   return (
     <>

@@ -14,4 +14,12 @@ interface LoginRequest {
     password: string;
 }
 
-export type { stringDispatcher, RegisterRequest, LoginRequest };
+//Interface for JWT Token Header.
+interface JWTHeader {
+    email: string;
+    password: string;
+    iat: number;
+    exp: number;
+}
+
+export type { stringDispatcher, RegisterRequest, LoginRequest, JWTHeader };

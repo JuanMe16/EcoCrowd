@@ -5,11 +5,12 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 
 interface Props {
-  controller: stringDispatcher
+  controller: stringDispatcher;
+  signController: () => void;
 }
 
 //Login Component Form to Authenticate an user.
-export const LoginComponent: React.FC<Props> = ({controller}) => {
+export const LoginComponent: React.FC<Props> = ({controller, signController}) => {
   const [loginForm, setLoginForm] = useState({username: "", email: "", password: ""});
 
   const handleForm = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,6 +24,7 @@ export const LoginComponent: React.FC<Props> = ({controller}) => {
     event.preventDefault();
     sendLogin(loginForm).then((result) => {
       alert(result);
+      signController();
     }).catch((err) => {
       alert(err);
     });

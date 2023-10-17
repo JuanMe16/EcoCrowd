@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
+//Component to show Latest Projects launched on the web app.
 export default function LatestProjects() {
     const projectsList = [
         { id: 1, title: "Proyecto Gato", description: "Proyecto creado para alimentar a todos los gatos del mundo con salmon y muchos pecesitos" },

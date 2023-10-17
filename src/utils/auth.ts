@@ -1,16 +1,6 @@
 import { RegisterRequest, LoginRequest } from "@/interfaces/auth";
+import { baseUrl, manageData } from ".";
 import axios from "axios";
-
-const baseUrl = "/api/auth";
-
-//Manages the data retrieven by the REST API.
-const manageData = (dataPayload: any) => {
-    if (dataPayload.error) {
-        return [false, dataPayload.error];
-    } else {
-        return [true, dataPayload];
-    }
-}
 
 //Register Axios Request to register a new user.
 export const sendRegister = async (payload: RegisterRequest) => {
@@ -21,7 +11,7 @@ export const sendRegister = async (payload: RegisterRequest) => {
     });
     const output = manageData(result.data);
     return output[0] ? "Successfully registered!" : output[1];
-}
+};
 
 //Login Axios Request to sign in a user.
 export const sendLogin = async (payload: LoginRequest) => {
@@ -30,6 +20,10 @@ export const sendLogin = async (payload: LoginRequest) => {
         password: payload.password
     });
     const output = manageData(result.data);
-    window.localStorage.setItem("session", output[1].token);
-    return output[0] ? "Login Sucessfully done." : output[1];
-}
+    if (output[0]) {
+        window.localStorage.setItem("session", output[1].token);
+        return "Login Sucessfully done.";
+    } else {
+        throw new Error(output[1]);
+    }
+};

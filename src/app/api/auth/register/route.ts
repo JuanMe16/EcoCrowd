@@ -3,6 +3,7 @@ import { prisma } from "@/database/prisma";
 import { RegisterRequest } from "@/interfaces/auth";
 import bcrypt from "bcrypt";
 
+//Register endpoint to create - open a new account.
 export async function POST(request: Request) {
     const { username, email, password }: RegisterRequest = await request.json();
     if (!email || !password) {

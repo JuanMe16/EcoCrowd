@@ -1,5 +1,6 @@
 import React from 'react';
 
+//Project Stats for a selected project.
 export default function UserProjectsStats() {
     const project = {
         id: 1, title: "Project Template",
