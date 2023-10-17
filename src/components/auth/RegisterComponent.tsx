@@ -1,13 +1,23 @@
 "use client";
 import { stringDispatcher } from '@/interfaces/auth';
 import Link from 'next/link';
-import React from 'react';
+import React, { ChangeEvent, useState } from 'react';
 
 interface Props {
   controller: stringDispatcher
 }
 
+//Register Component Form to create a new user.
 export const RegisterComponent: React.FC<Props> = ({ controller }) => {
+  const [registerForm, setRegisterForm] = useState({});
+  
+  const handleForm = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRegisterForm({
+      ...registerForm,
+      [event.target.name]: event.target.value 
+    });
+  };
+
   return (
     <div className="flex flex-col drop-shadow-lg items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
       <Link href="/" className="flex items-center mb-6 text-2xl font-bold text-gray-200">

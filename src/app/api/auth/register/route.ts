@@ -20,5 +20,5 @@ export async function POST(request: Request) {
             socials: ""
         }
     });
-    return NextResponse.json({ ok: "Successfully registered!" });
+    return NextResponse.json({ info: "Successfully registered!" });
 }

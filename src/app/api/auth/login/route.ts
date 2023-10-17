@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/database/prisma";
 import { LoginRequest } from "@/interfaces/auth";
+import { serialize } from "cookie";
+import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
 export async function POST(request: Request) {
@@ -14,7 +16,9 @@ export async function POST(request: Request) {
     }
     const compareResult = await bcrypt.compare(password, userFound.password);
     if (compareResult) {
-        return NextResponse.json({ ok: "Successfully logged." });
+        const creationTime = new Date().getTime();
+        const token = jwt.sign({ email, password, creationTime }, process.env.SECRET_KEY);
+        return NextResponse.json({ token: token });
     }
-    return NextResponse.json({ ok: "Incorrect password." });
+    return NextResponse.json({ info: "Incorrect password." });
 }
