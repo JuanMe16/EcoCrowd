@@ -1,4 +1,4 @@
-//Type to evade boilerplate and giantic name types.
+//Type to evade boilerplate and gigantic name types.
 type stringDispatcher = React.Dispatch<React.SetStateAction<string>>
 
 //Interface for register request.

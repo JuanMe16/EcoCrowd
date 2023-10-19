@@ -15,7 +15,7 @@ export async function GET(request: Request) {
                 return NextResponse.json({ info: {email: foundUser.email, username: foundUser.username, createdAt: foundUser.creationDate, age: foundUser.age} });
             }
         } catch (err) {
-            return NextResponse.json({error: "JWT Malformed."});
+            return NextResponse.json({error: "JWT Malformed or Expired."});
         }
     } else {
         return NextResponse.json({error: "You are not authenticated."});

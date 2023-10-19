@@ -10,7 +10,11 @@ export const sendRegister = async (payload: RegisterRequest) => {
         password: payload.password
     });
     const output = manageData(result.data);
-    return output[0] ? "Successfully registered!" : output[1];
+    if (output[0]) {
+        return "Successfully registered!";
+    } else {
+        throw new Error(output[1]);
+    }
 };
 
 //Login Axios Request to sign in a user.
@@ -22,7 +26,7 @@ export const sendLogin = async (payload: LoginRequest) => {
     const output = manageData(result.data);
     if (output[0]) {
         window.localStorage.setItem("session", output[1].token);
-        return "Login Sucessfully done.";
+        return "Login Successfully done.";
     } else {
         throw new Error(output[1]);
     }

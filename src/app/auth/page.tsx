@@ -4,7 +4,7 @@ import { LoginComponent } from "@/components/auth/LoginComponent";
 import { RegisterComponent } from "@/components/auth/RegisterComponent";
 import { useRouter } from "next/navigation";
 
-//Auth page to controll between login and register components.
+//Auth page to control between login and register components.
 export default function AuthenticationPage() {
   const [authMethod, setAuthMethod] = useState("login");
   const router = useRouter();
