@@ -7,7 +7,7 @@ import bcrypt from "bcrypt";
 export async function POST(request: Request) {
     const { username, email, password }: RegisterRequest = await request.json();
     if (!email || !password) {
-        return NextResponse.json({ error: "Malformed JSON values are missing." });
+        return NextResponse.json({ error: "Malformed JSON values are missing." }, { status: 400 });
     }
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(password, salt);
@@ -21,5 +21,5 @@ export async function POST(request: Request) {
             socials: ""
         }
     });
-    return NextResponse.json({ info: "Successfully registered!" });
+    return NextResponse.json({ info: "Successfully registered!" }, { status: 201 });
 }

@@ -1,7 +1,7 @@
 "use client";
 import { ProfileResume } from "@/components/dashboard/ProfileResume";
-import LatestProjects from "@/components/dashboard/LatestProjects";
-import UserProjectsStats from "@/components/dashboard/UserProjectsStats";
+import { LatestProjects } from "@/components/dashboard/LatestProjects";
+import { UserProjectsStats } from "@/components/dashboard/UserProjectsStats";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { sendProfileResume } from "@/utils/dashboard";

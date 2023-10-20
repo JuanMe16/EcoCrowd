@@ -1,7 +1,7 @@
 import React from 'react';
 
 //Project Stats for a selected project.
-export default function UserProjectsStats() {
+export const UserProjectsStats = () => {
     const project = {
         id: 1, title: "Project Template",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, nulla reiciendis laborum animi dignissimos similique nesciunt maxime repellat explicabo placeat!",
@@ -44,7 +44,7 @@ export default function UserProjectsStats() {
                     <div className='my-2'>
                         <span className='font-bold'>Project Stats</span>
                         <pre>Needed investment: ${project.investment}</pre>
-                        <pre>Recauded Money: ${project.money}</pre>
+                        <pre>Collected Money: ${project.money}</pre>
                         <pre>Project created at: {project.created}</pre>
                     </div>
                     <div className='my-2'>

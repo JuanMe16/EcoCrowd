@@ -9,16 +9,16 @@ export async function POST(request: Request) {
     const { email, password }: LoginRequest = await request.json();
     const response = NextResponse.next();
     if (!email || !password) {
-        return NextResponse.json({ error: "Malformed Body."});
+        return NextResponse.json({ error: "Malformed Body." }, { status: 400 });
     }
     const userFound = await prisma.user.findUnique({ where: { email: email } });
     if (!userFound) {
-        return NextResponse.json({ error: "Email is not registered." });
+        return NextResponse.json({ error: "Email is not registered." }, { status: 404 });
     }
     const compareResult = await bcrypt.compare(password, userFound.password);
     if (compareResult) {
         const token = jwt.sign({ email, password }, process.env.SECRET_KEY, { expiresIn: "2h" });
         return NextResponse.json({ token: token });
     }
-    return NextResponse.json({ error: "Incorrect password." });
+    return NextResponse.json({ error: "Incorrect password." }, { status: 400 });
 }

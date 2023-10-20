@@ -10,15 +10,15 @@ export async function GET(request: Request) {
         try {
             const decodedJWT = jwt.verify(token, process.env.SECRET_KEY);
             const decodedToken = decodedJWT as JWTHeader;
-            const foundUser = await prisma.user.findUnique({ where:{ email: decodedToken.email } });
+            const foundUser = await prisma.user.findUnique({ where: { email: decodedToken.email } });
             if (foundUser) {
-                return NextResponse.json({ info: {email: foundUser.email, username: foundUser.username, createdAt: foundUser.creationDate, age: foundUser.age} });
+                return NextResponse.json({ info: { email: foundUser.email, username: foundUser.username, createdAt: foundUser.creationDate, age: foundUser.age } });
             }
         } catch (err) {
-            return NextResponse.json({error: "JWT Malformed or Expired."});
+            return NextResponse.json({ error: "JWT Malformed or Expired." }, { status: 400 });
         }
     } else {
-        return NextResponse.json({error: "You are not authenticated."});
+        return NextResponse.json({ error: "You are not authenticated." }, { status: 401 });
     }
-    return NextResponse.json({error: "User not found."});
+    return NextResponse.json({ error: "User not found." }, { status: 404 });
 }

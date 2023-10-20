@@ -2,9 +2,9 @@ import React from 'react';
 import { Lalezar } from 'next/font/google';
 import Link from 'next/link';
 
-//Navigation Bar for Dashboard.
 const lalezar = Lalezar({ subsets: ["latin"], weight: "400" });
 
+//Navigation Bar for Dashboard.
 export const Navbar = () => {
     const routesList = [
         { href: "/dashboard", name: "Overview" },
@@ -23,7 +23,7 @@ export const Navbar = () => {
                         return (
                             <li className='my-auto duration-300 hover:scale-105 hover:text-green-900' key={key}><Link href={v.href}>{v.name}</Link></li>
                         )
-                    })};
+                    })}
                 </ul>
             </nav>
         </>
